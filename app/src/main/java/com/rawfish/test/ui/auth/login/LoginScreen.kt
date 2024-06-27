@@ -1,4 +1,4 @@
-package com.rawfish.test.ui.home
+package com.rawfish.test.ui.auth.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,45 +13,34 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.rawfish.test.dispatcher.DispatcherNavigation
-import com.rawfish.test.ui.dashboard.ItemDetail
+import com.rawfish.test.ui.auth.SignUp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
-    navController: NavController,
-    args: DispatcherNavigation.Dashboard
-) {
+fun LoginScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Home")
+                    Text(text = "Login")
                 }
             )
         },
-        modifier = Modifier
-            .fillMaxSize()
-            // .padding(navigationBarInnerPadding)
-    ) { paddingValues ->
+        modifier = Modifier.fillMaxSize()
+    ) { innerPadding ->
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
+                .padding(innerPadding)
         ) {
-            Text(text = "User id is: ${args.userId}")
             Button(
                 onClick = {
-                    navController.navigate(
-                        route = ItemDetail(
-                            detailId = "home-1234"
-                        )
-                    )
+                    navController.navigate(route = SignUp)
                 }
             ) {
-                Text(text = "Go to detail view")
+                Text(text = "Go to SignUp view")
             }
         }
     }

@@ -1,7 +1,8 @@
-package com.rawfish.test.ui.home
+package com.rawfish.test.ui.chat
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -14,19 +15,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.rawfish.test.dispatcher.DispatcherNavigation
-import com.rawfish.test.ui.dashboard.ItemDetail
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
-    navController: NavController,
-    args: DispatcherNavigation.Dashboard
-) {
+fun ChatScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Home")
+                    Text(text = "Chat")
                 }
             )
         },
@@ -41,17 +38,12 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            Text(text = "User id is: ${args.userId}")
             Button(
                 onClick = {
-                    navController.navigate(
-                        route = ItemDetail(
-                            detailId = "home-1234"
-                        )
-                    )
+                    navController.navigate(route = DispatcherNavigation.AuthNavigation)
                 }
             ) {
-                Text(text = "Go to detail view")
+                Text(text = "Go to new graph nested")
             }
         }
     }
